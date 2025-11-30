@@ -1,0 +1,702 @@
+@import url(./reset.css);
+@import url(./font.css);
+
+body {
+  position: relative;
+  background-color: #f9f9f9;
+  font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  letter-spacing: 2%;
+}
+
+h1,
+h2,
+h3,
+span,
+.pixel_font {
+  font-family: 'neodgm', 'Pretendard Variable', 'Pretendard';
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+span {
+  font-size: 16px;
+}
+
+section {
+  width: 100%;
+  padding: 100px 20px;
+}
+
+section>div {
+  max-width: 1400px;
+  margin: auto;
+  width: 100%;
+}
+
+/* header */
+
+header {
+  width: 100%;
+  height: 80px;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 999;
+  border-bottom: 2px solid #000;
+  align-content: center;
+}
+
+header .header_i {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .header_i .logo a {
+  display: flex;
+}
+
+header .header_i nav ul {
+  display: flex;
+  gap: 60px;
+  font-size: 24px;
+}
+
+#top {
+  position: fixed;
+  bottom: 80px;
+  right: 80px;
+  z-index: 999;
+}
+
+#top a {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px #000;
+}
+
+/* #banner */
+
+#banner {
+  height: calc(100vh - 80px);
+  padding-top: 0;
+  width: 100%;
+  position: relative;
+}
+
+#banner .banner_i {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#banner .banner_i .b_dot {
+  height: 60%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: aqua;
+}
+
+#banner .banner_i .b_text {
+  height: 40%;
+  width: 100%;
+  padding-top: 30px;
+  box-sizing: border-box;
+}
+
+#banner .banner_i .b_text h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+#banner .banner_i .down {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+#banner .banner_i .down h2 {
+  font-size: 28px;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* #aboutme */
+
+#aboutme {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+#aboutme .aboutme_i h1 {
+  margin-bottom: 20px;
+}
+
+#aboutme .aboutme_i .am_box {
+  display: flex;
+  gap: 35px;
+}
+
+#aboutme .aboutme_i .am_box .profile {
+  max-width: 366px;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+#aboutme .aboutme_i .am_box .profile .up {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #000;
+  margin-bottom: 16px;
+}
+
+#aboutme .aboutme_i .am_box .profile .up .img {
+  width: 180px;
+  height: 180px;
+  background-image: url(../img/KakaoTalk_20251126_125532152.jpg);
+  background-position: center center;
+  background-size: cover;
+  border: 1px solid #000;
+  outline: 1px solid #000;
+  outline-offset: 1px;
+}
+
+#aboutme .aboutme_i .am_box .profile .up .title {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+#aboutme .aboutme_i .am_box .profile h3 {
+  font-size: 20px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down div h3 {
+  margin-bottom: 8px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .strength ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .title .icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../img/free-icon-font-folder-3917537\ 1.svg);
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree {
+  padding-left: 18px;
+  margin-left: 8px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li {
+  position: relative;
+  padding-bottom: 8px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: -0px;
+  width: 2px;
+  height: 100%;
+  background-color: #000;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li::after {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 40%;
+  width: 14px;
+  height: 2px;
+  background-color: #000;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li:last-child::before {
+  height: 13px;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li .icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li .i1 {
+  background-image: url(../img/free-icon-font-bolt-6853834\ 1.svg);
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li .i2 {
+  background-image: url(../img/free-icon-font-user-3917688\ 1.svg);
+}
+
+#aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li .i3 {
+  background-image: url(../img/free-icon-font-text-3914346\ 1.svg);
+}
+
+
+
+#aboutme .aboutme_i .am_box .skill {
+  display: grid;
+  grid-template: 1fr 1fr max-content / 1fr 1fr;
+  gap: 15px;
+  flex: 1;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+
+#aboutme .aboutme_i .am_box .skill .s2 {
+  grid-row: 2;
+}
+
+#aboutme .aboutme_i .am_box .skill .s3 {
+  grid-row: span 2;
+}
+
+#aboutme .aboutme_i .am_box .skill .s4 {
+  grid-row: 3;
+  grid-column: 1 / 3;
+}
+
+#aboutme .aboutme_i .am_box .skill .box {
+  display: flex;
+  flex-direction: column;
+}
+
+#aboutme .aboutme_i .am_box .skill .box:not(.s4) .item_box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+#aboutme .aboutme_i .am_box .skill .s4 .item_box {
+  display: flex;
+  gap: 16px;
+}
+
+
+#aboutme .aboutme_i .am_box .skill .box h2 {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  padding-left: 16px;
+  align-content: center;
+}
+
+#aboutme .aboutme_i .am_box .skill .box .item_box .item {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+#aboutme .aboutme_i .am_box .skill .s4 .item_box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+
+#aboutme .aboutme_i .am_box .skill .s4 .item_box .item {
+  border-bottom: none;
+  padding-bottom: 0;
+  padding-top: 16px;
+}
+
+#aboutme .aboutme_i .am_box .skill .box .item_box .item:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+#aboutme .aboutme_i .am_box .skill .box .item_box .item .text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#aboutme .aboutme_i .am_box .skill .box .item_box .item .icon {
+  width: 40px;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+#portfolio {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+#portfolio .portfolio_i h1 {
+  margin-bottom: 20px;
+}
+
+#portfolio .portfolio_i h2 {
+  margin-bottom: 12px;
+}
+
+#portfolio .portfolio_i .contents {
+  display: flex;
+  gap: 40px;
+}
+
+#portfolio .portfolio_i .contents .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#portfolio .portfolio_i .contents .left nav{
+  position: relative;
+}
+
+#portfolio .portfolio_i .contents .left nav ul {
+  border-left: 2px solid #777;
+  padding-left: 10px;
+}
+
+#portfolio .portfolio_i .contents .left nav ul li {
+  font-size: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+#portfolio .portfolio_i .contents .left nav ul li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 16px 18px;
+}
+
+#portfolio .portfolio_i .contents .left nav ul li span {
+  font-size: 22px;
+  margin-right: 6px;
+  color: #000;
+}
+
+#portfolio .portfolio_i .contents .left nav ul li.active {
+  background-color: #000;
+  color: #fff;
+}
+
+#portfolio .portfolio_i .contents .left nav ul li.active a,
+#portfolio .portfolio_i .contents .left nav ul li.active span {
+  color: #fff;
+}
+
+
+#portfolio .portfolio_i .contents .left nav .arrow {
+  font-size: 28px;
+  position: absolute;
+  left: 290px;
+  top: 0;
+  transition: top 0.3s;
+  z-index: 10;
+  animation: blink 1s infinite step-end;
+}
+
+#portfolio .portfolio_i .contents .right {
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 30px;
+  background-color: #fff;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item {
+  display: none;
+  gap: 30px;
+  animation: fadeEffect 0.2s;
+}
+
+#portfolio .portfolio_i .contents .right #bbq {
+  display: flex;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text h3 {
+  font-size: 18px;
+  padding-left: 16px;
+  border-left: 4px solid #000;
+  margin-bottom: 12px;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .t_title span {
+  color: #888;
+  border-bottom: 1px solid #888;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .t_title h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .t_title p {
+  font-size: 18px;
+  color: #555;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .info .info_row {
+  display: flex;
+  gap: 40px;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .info .info_row dt {
+  width: 55px;
+  color: #555;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .process div {
+  padding: 16px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #444;
+  line-height: 1.5;
+  border: 1px dashed #000;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .btn {
+  display: flex;
+  gap: 30px;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .btn a {
+  padding: 14px 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 #000;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .img {
+  flex: 1.3;
+  position: relative;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .img img {
+  border: 2px solid #000;
+  border-radius: 4px;
+  position: absolute;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .img .bbq2 {
+  bottom: 0;
+  right: 0;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .img .star2 {
+  bottom: 0;
+  left: 0;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .img .star3 {
+  bottom: 0;
+  right: 0;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .img .bone2 {
+  bottom: 10%;
+  right: 0;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .img .bone3 {
+  bottom: 0;
+  right: 0;
+}
+
+#contact {
+  height: 90vh;
+  width: 100%;
+  position: relative;
+  padding-bottom: 0;
+}
+
+#contact .contact_i>h1{
+  margin-bottom: 40px;
+}
+
+#contact .contact_i .msg{
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+#contact .contact_i .msg h1{
+  margin-bottom: 12px;
+}
+
+#contact .contact_i .msg h1 .cursor {
+  display: inline-block;
+  width: 1em;
+  height: 6px;
+  background-color: #000;
+  animation: blink 1.5s infinite step-end;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+#contact .contact_i .msg p{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#contact .contact_i .info{
+  justify-self: center;
+  width: fit-content;
+  text-align: center;
+  padding: 30px;
+  border: 1px dashed #777;
+}
+#contact .contact_i .info h2{
+  margin-bottom: 28px;
+}
+
+#contact .contact_i .info .info_i{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#contact .contact_i .info .info_i .row:not(:last-of-type){
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+#contact .contact_i .info .info_i .row dt{
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+#contact .contact_i .info .info_i .row dd{
+  font-size: 24px;
+}
+
+footer{
+  height: 10vh;
+  width: 100%;
+  position: relative;
+  padding: 0 10px;
+}
+
+footer .footer_i{
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
