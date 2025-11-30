@@ -1,5 +1,3 @@
-// [js/index.js]
-
 document.addEventListener("DOMContentLoaded", function () {
   // 1. 요소 선택
   const tabLinks = document.querySelectorAll("#portfolio .left nav ul li a");
@@ -62,6 +60,94 @@ document.addEventListener("DOMContentLoaded", function () {
   activateTab(0);
   
   // (선택사항) 브라우저 리사이즈 시 화살표 위치 재조정
+  window.addEventListener('resize', () => {
+      const activeLi = document.querySelector("#portfolio .left nav ul li.active");
+      if(activeLi) moveArrow(activeLi);
+  });
+});
+
+// [js/index.js 통합 최종본]
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. 요소 선택
+  const tabLinks = document.querySelectorAll("#portfolio .left nav ul li a");
+  const tabLis = document.querySelectorAll("#portfolio .left nav ul li");
+  const tabContents = document.querySelectorAll(".pf_item");
+  const arrow = document.querySelector("#portfolio .left nav .arrow");
+  const navUl = document.querySelector("#portfolio .left nav ul");
+
+  // 햄버거 메뉴 관련 요소
+  const hamburger = document.querySelector(".hamburger");
+  const mobileNav = document.querySelector(".mobile_nav");
+  const mobileLinks = document.querySelectorAll(".mobile_nav a"); 
+
+  // 2. 탭 활성화 함수
+  function activateTab(index) {
+    tabLis.forEach((li) => li.classList.remove("active"));
+    const activeLi = tabLis[index];
+    activeLi.classList.add("active");
+
+    tabContents.forEach((content) => (content.style.display = "none"));
+    
+    // href="#bbq" 같은 값에서 id 추출
+    const targetHref = tabLinks[index].getAttribute("href");
+    if(targetHref.startsWith("#")) {
+        const targetId = targetHref.substring(1);
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+            targetContent.style.display = "flex";
+        }
+    }
+
+    // 화살표 이동 (약간의 딜레이)
+    setTimeout(() => moveArrow(activeLi), 50);
+  }
+
+  // 3. 화살표 이동 계산 함수 (반응형 대응)
+  function moveArrow(targetLi) {
+    const isResponsive = window.innerWidth <= 1024; // 태블릿, 모바일 기준
+
+    // 공통 로직 (세로 리스트 기준)
+    const topPosition = targetLi.offsetTop + navUl.offsetTop;
+    const centerAdjust = (targetLi.offsetHeight / 2) - (arrow.offsetHeight / 2);
+    
+    // top 위치 적용
+    arrow.style.top = `${topPosition + centerAdjust}px`;
+
+    // left/right 위치 보정 (필요시)
+    if (isResponsive) {
+       // 모바일에서는 CSS가 right 값을 제어하므로 JS는 관여 안 함 (또는 필요시 추가)
+    } 
+  }
+
+  // 4. 포트폴리오 탭 클릭 이벤트
+  tabLinks.forEach((link, index) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); 
+      activateTab(index); 
+    });
+  });
+
+  // 5. 햄버거 버튼 클릭 이벤트
+  if(hamburger) {
+      hamburger.addEventListener("click", function() {
+        this.classList.toggle("active"); // 햄버거 애니메이션
+        mobileNav.classList.toggle("active"); // 메뉴 등장
+      });
+  }
+
+  // 6. 모바일 메뉴 링크 클릭 시 닫기
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        mobileNav.classList.remove("active");
+    });
+  });
+
+  // 7. 초기 실행
+  activateTab(0);
+  
+  // 리사이즈 시 화살표 재조정
   window.addEventListener('resize', () => {
       const activeLi = document.querySelector("#portfolio .left nav ul li.active");
       if(activeLi) moveArrow(activeLi);

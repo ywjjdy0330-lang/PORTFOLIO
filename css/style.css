@@ -84,6 +84,10 @@ header .header_i nav ul {
   font-size: 24px;
 }
 
+.hamburger, .mobile_nav {
+  display: none;
+}
+
 #top {
   position: fixed;
   bottom: 80px;
@@ -611,7 +615,7 @@ header .header_i nav ul {
 }
 
 #contact {
-  height: 90vh;
+  height: 87vh;
   width: 100%;
   position: relative;
   padding-bottom: 0;
@@ -689,7 +693,7 @@ header .header_i nav ul {
 }
 
 footer{
-  height: 10vh;
+  height: 13vh;
   width: 100%;
   position: relative;
   padding: 0 10px;
@@ -699,4 +703,152 @@ footer .footer_i{
   width: 100%;
   max-width: 1400px;
   margin: auto;
+}
+
+footer .footer_i p{
+  margin-bottom: 20px;
+}
+
+/* =========================================
+   RESPONSIVE (반응형) - 여기부터 끝까지 덮어씌우세요
+   ========================================= */
+
+/* --- 1. Tablet & Mobile Common (Max 1024px) --- */
+@media screen and (max-width: 1024px) {
+    /* Header & Nav */
+    header { padding: 0 20px; }
+    
+    /* [수정됨] 클래스 이름 대신 태그 구조로 직접 찍어서 숨김 (가장 강력함) */
+    header .header_i nav.desktop_nav { 
+        display: none !important; 
+    }
+    
+    /* 혹시 몰라 nav 태그 자체도 숨김 처리 (안전장치) */
+    header .header_i > nav {
+        display: none !important;
+    }
+
+    /* 햄버거 버튼 보이기 */
+    .hamburger {
+        display: block;
+        width: 30px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #000;
+        position: absolute;
+        transition: 0.3s;
+    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .hamburger span:nth-child(3) { bottom: 0; }
+
+    /* 햄버거 Active 애니메이션 */
+    .hamburger.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+    /* 모바일 메뉴 오버레이 */
+    .mobile_nav {
+        display: flex; /* block 대신 flex로 변경하여 중앙 정렬 보장 */
+        position: fixed;
+        top: 0; right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.95);
+        z-index: 1000;
+        transition: 0.4s ease;
+        justify-content: center;
+        align-items: center;
+        opacity: 0; /* 평소엔 투명하게 */
+        visibility: hidden; /* 클릭 안되게 숨김 */
+    }
+    
+    /* 활성화 되었을 때 */
+    .mobile_nav.active { 
+        right: 0; 
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .mobile_nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    .mobile_nav ul li a {
+        font-size: 32px;
+        color: #000;
+    }
+
+    /* Layout Adjustments */
+    section { padding: 60px 20px; }
+    
+    /* About Me */
+    #aboutme { height: auto; min-height: 100vh; }
+    #aboutme .aboutme_i .am_box { flex-direction: column; }
+    #aboutme .aboutme_i .am_box .profile {
+        max-width: 100%; width: 100%;
+        display: flex; flex-direction: row; justify-content: space-between; gap: 20px;
+    }
+    #aboutme .aboutme_i .am_box .profile .up {
+        width: 40%; border-bottom: none; border-right: 2px solid #000;
+        margin-bottom: 0; padding-bottom: 0; justify-content: center;
+    }
+    #aboutme .aboutme_i .am_box .profile .down { width: 55%; justify-content: center; }
+
+    /* Portfolio */
+    #portfolio { height: auto; min-height: 100vh; }
+    #portfolio .portfolio_i .contents { flex-direction: column; }
+    #portfolio .portfolio_i .contents .left { width: 100%; margin-bottom: 20px; }
+    #portfolio .portfolio_i .contents .left nav ul { display: flex; flex-direction: column; }
+    #portfolio .portfolio_i .contents .left nav .arrow { left: 250px; }
+
+    #portfolio .portfolio_i .contents .left .pf_footer {
+        display: none !important;
+    }
+    
+    /* Contact */
+    #contact { height: auto; padding-bottom: 100px; }
+}
+
+/* --- 2. Mobile (Max 767px) --- */
+@media screen and (max-width: 767px) {
+    h1 { font-size: 28px; }
+    h2 { font-size: 20px; }
+    p, span { font-size: 14px; }
+    #top { right: 20px; bottom: 20px; }
+    #top a { width: 40px; height: 40px; font-size: 12px; }
+    #banner .banner_i .b_text h2 { font-size: 24px; }
+    
+    /* About Me - Mobile Stack */
+    #aboutme .aboutme_i .am_box .profile { flex-direction: column; }
+    #aboutme .aboutme_i .am_box .profile .up {
+        width: 100%; border-right: none; border-bottom: 2px solid #000;
+        padding-bottom: 20px; margin-bottom: 20px;
+    }
+    #aboutme .aboutme_i .am_box .profile .down { width: 100%; }
+    
+    #aboutme .aboutme_i .am_box .skill { display: flex; flex-direction: column; gap: 20px; }
+    #aboutme .aboutme_i .am_box .skill .s4 .item_box { display: flex; flex-direction: column; align-items: flex-start; }
+    #aboutme .aboutme_i .am_box .skill .s4 .item_box .item { width: 100%; border-bottom: 1px dashed #ddd; padding: 10px 0; }
+
+    /* Portfolio */
+    #portfolio .portfolio_i .contents .right { padding: 15px; }
+    #portfolio .portfolio_i .contents .right .pf_item { flex-direction: column-reverse; }
+    #portfolio .portfolio_i .contents .right .pf_item .img { height: 300px; margin-bottom: 20px; }
+    #portfolio .portfolio_i .contents .right .pf_item .img img { width: 80%; }
+    #portfolio .portfolio_i .contents .left nav .arrow { left: auto; right: 20px; }
+
+    /* Contact */
+    #contact .contact_i .msg h1 { font-size: 24px; }
+    #contact .contact_i .info { width: 100%; padding: 20px; }
+    #contact .contact_i .info .info_i .row dd { font-size: 16px; word-break: break-all; }
 }
