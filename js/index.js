@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
   AOS.init({
-    duration: 1000, 
-    once: true      
+    duration: 1000,
+    once: true
   });
   // ==========================================
   // 1. 변수 설정
@@ -109,7 +109,7 @@ $(document).ready(function () {
   // ==========================================
   const $typingTarget = $(".b_text h2");
   const typingText = "Web Publisher <br> Portfolio Ver 1.0.0";
-  
+
   $typingTarget.html("").addClass("typing-cursor");
 
   let i = 0;
@@ -139,7 +139,7 @@ $(document).ready(function () {
   // 6. TOP 버튼 기능 (기존 코드 유지)
   // ==========================================
   const $topBtn = $("#top");
-  
+
   $topBtn.hide();
 
   $(window).on("scroll", function () {
@@ -148,5 +148,15 @@ $(document).ready(function () {
     } else {
       $topBtn.fadeOut();
     }
+  });
+});
+// 이메일 클릭 시 복사 기능
+$(".info_i .row:nth-child(2) dd").css("cursor", "pointer").on("click", function () {
+  const emailText = "ywjjdy0330@gmail.com";
+
+  navigator.clipboard.writeText(emailText).then(() => {
+    alert("이메일 주소가 복사되었습니다: " + emailText);
+  }).catch(err => {
+    console.error('복사 실패:', err);
   });
 });

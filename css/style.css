@@ -184,8 +184,15 @@ header .header_i nav ul {
 }
 
 @keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 #banner .banner_i .down {
@@ -859,18 +866,18 @@ footer .footer_i p {
     color: #000;
   }
 
-.pixel-text-container {
-  gap: 8px;
-}
+  .pixel-text-container {
+    gap: 8px;
+  }
 
-.pixel-char {
-  gap: 2px;
-}
+  .pixel-char {
+    gap: 2px;
+  }
 
-.pixel-dot {
-  width: 14px;
-  height: 14px;
-}
+  .pixel-dot {
+    width: 14px;
+    height: 14px;
+  }
 
   section {
     padding: 60px 20px;
@@ -928,7 +935,7 @@ footer .footer_i p {
     flex-direction: column;
   }
 
-    #portfolio .portfolio_i .contents .left nav .arrow {
+  #portfolio .portfolio_i .contents .left nav .arrow {
     color: #fff;
     left: auto;
     right: 20px;
@@ -971,17 +978,17 @@ footer .footer_i p {
   }
 
   .pixel-text-container {
-  gap: 4px;
-}
+    gap: 4px;
+  }
 
-.pixel-char {
-  gap: 1px;
-}
+  .pixel-char {
+    gap: 1px;
+  }
 
-.pixel-dot {
-  width: 6px;
-  height: 6px;
-}
+  .pixel-dot {
+    width: 6px;
+    height: 6px;
+  }
 
   #banner .banner_i .b_text h2 {
     font-size: 24px;
