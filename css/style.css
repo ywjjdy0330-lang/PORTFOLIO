@@ -237,6 +237,7 @@ header .header_i nav ul {
   padding: 20px;
   border: 2px solid #000;
   border-radius: 4px;
+  background-color: #f9f9f9;
 }
 
 #aboutme .aboutme_i .am_box .profile .up {
@@ -372,6 +373,8 @@ header .header_i nav ul {
   padding: 20px;
   border: 2px solid #000;
   border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 4px 4px 0px #000;
 }
 
 
@@ -537,6 +540,7 @@ header .header_i nav ul {
   border-radius: 4px;
   padding: 30px;
   background-color: #fff;
+  box-shadow: 4px 4px 0px #000;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item {
@@ -718,6 +722,7 @@ header .header_i nav ul {
   text-align: center;
   padding: 30px;
   border: 1px dashed #777;
+  background-color: #f9f9f9;
 }
 
 #contact .contact_i .info h2 {
