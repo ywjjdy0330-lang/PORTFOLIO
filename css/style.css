@@ -5,7 +5,7 @@ body {
   position: relative;
   background-color: #f9f9f9;
   font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-  letter-spacing: 2%;
+  letter-spacing: 0.02em;
 }
 
 h1,
@@ -84,7 +84,8 @@ header .header_i nav ul {
   font-size: 24px;
 }
 
-.hamburger, .mobile_nav {
+.hamburger,
+.mobile_nav {
   display: none;
 }
 
@@ -105,6 +106,7 @@ header .header_i nav ul {
   border-radius: 4px;
   border: 2px solid #000;
   box-shadow: 4px 4px #000;
+  background-color: #fff;
 }
 
 /* #banner */
@@ -114,6 +116,7 @@ header .header_i nav ul {
   padding-top: 0;
   width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 #banner .banner_i {
@@ -131,7 +134,36 @@ header .header_i nav ul {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background-color: aqua;
+  position: relative;
+}
+
+.pixel-text-container {
+  position: relative;
+  display: flex;
+  gap: 16px;
+}
+
+/* 개별 글자 박스 */
+.pixel-char {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5칸 너비 기준 */
+  gap: 2px; /* 도트 사이 간격 */
+}
+
+/* 실제 도트 (네모 점) */
+.pixel-dot {
+  width: 18px;
+  height: 18px;
+  background-color: #333;
+  opacity: 0;
+  transform: translate(var(--rx), var(--ry)) scale(0);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-in;
+}
+
+/* 애니메이션 클래스가 붙으면 제자리로 */
+.pixel-dot.active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
 }
 
 #banner .banner_i .b_text {
@@ -176,7 +208,7 @@ header .header_i nav ul {
 /* #aboutme */
 
 #aboutme {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   position: relative;
 }
@@ -211,7 +243,7 @@ header .header_i nav ul {
 #aboutme .aboutme_i .am_box .profile .up .img {
   width: 180px;
   height: 180px;
-  background-image: url(../img/KakaoTalk_20251126_125532152.jpg);
+  background-image: url(../img/profile.jpg);
   background-position: center center;
   background-size: cover;
   border: 1px solid #000;
@@ -380,6 +412,7 @@ header .header_i nav ul {
   flex: 1;
   align-items: center;
   border-bottom: 1px solid #eee;
+  padding: 8px 0;
 }
 
 #aboutme .aboutme_i .am_box .skill .s4 .item_box {
@@ -412,7 +445,7 @@ header .header_i nav ul {
 }
 
 #portfolio {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   position: relative;
 }
@@ -435,7 +468,8 @@ header .header_i nav ul {
   flex-direction: column;
   justify-content: space-between;
 }
-#portfolio .portfolio_i .contents .left nav{
+
+#portfolio .portfolio_i .contents .left nav {
   position: relative;
 }
 
@@ -506,8 +540,15 @@ header .header_i nav ul {
 }
 
 @keyframes fadeEffect {
-  from {opacity: 0; transform: translateY(10px);}
-  to {opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .text {
@@ -590,48 +631,49 @@ header .header_i nav ul {
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img .bbq2 {
-  bottom: 0;
+  top: 170px;
   right: 0;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img .star2 {
-  bottom: 0;
+  top: 150px;
   left: 0;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img .star3 {
-  bottom: 0;
+  top: 150px;
   right: 0;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img .bone2 {
-  bottom: 10%;
+  top: 170px;
   right: 0;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img .bone3 {
-  bottom: 0;
+  top: 260px;
   right: 0;
 }
 
 #contact {
-  height: 87vh;
+  height: auto;
+  min-height: 80vh;
   width: 100%;
   position: relative;
   padding-bottom: 0;
 }
 
-#contact .contact_i>h1{
+#contact .contact_i>h1 {
   margin-bottom: 40px;
 }
 
-#contact .contact_i .msg{
+#contact .contact_i .msg {
   margin-bottom: 30px;
   text-align: center;
 }
 
 
-#contact .contact_i .msg h1{
+#contact .contact_i .msg h1 {
   margin-bottom: 12px;
 }
 
@@ -655,200 +697,369 @@ header .header_i nav ul {
   }
 }
 
-#contact .contact_i .msg p{
+#contact .contact_i .msg p {
   font-size: 20px;
   font-weight: 500;
 }
 
-#contact .contact_i .info{
+#contact .contact_i .info {
   justify-self: center;
   width: fit-content;
   text-align: center;
   padding: 30px;
   border: 1px dashed #777;
 }
-#contact .contact_i .info h2{
+
+#contact .contact_i .info h2 {
   margin-bottom: 28px;
 }
 
-#contact .contact_i .info .info_i{
+#contact .contact_i .info .info_i {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-#contact .contact_i .info .info_i .row:not(:last-of-type){
+#contact .contact_i .info .info_i .row:not(:last-of-type) {
   padding-bottom: 20px;
   border-bottom: 1px solid #ddd;
 }
 
-#contact .contact_i .info .info_i .row dt{
+#contact .contact_i .info .info_i .row dt {
   font-size: 20px;
   color: #666;
   margin-bottom: 8px;
 }
 
-#contact .contact_i .info .info_i .row dd{
+#contact .contact_i .info .info_i .row dd {
   font-size: 24px;
 }
 
-footer{
-  height: 13vh;
+footer {
+  height: auto;
   width: 100%;
   position: relative;
-  padding: 0 10px;
+  padding: 40px 10px;
 }
 
-footer .footer_i{
+footer .footer_i {
   width: 100%;
   max-width: 1400px;
   margin: auto;
 }
 
-footer .footer_i p{
+footer .footer_i p {
   margin-bottom: 20px;
 }
 
-/* =========================================
-   RESPONSIVE (반응형) - 여기부터 끝까지 덮어씌우세요
-   ========================================= */
-
-/* --- 1. Tablet & Mobile Common (Max 1024px) --- */
 @media screen and (max-width: 1024px) {
-    /* Header & Nav */
-    header { padding: 0 20px; }
-    
-    /* [수정됨] 클래스 이름 대신 태그 구조로 직접 찍어서 숨김 (가장 강력함) */
-    header .header_i nav.desktop_nav { 
-        display: none !important; 
-    }
-    
-    /* 혹시 몰라 nav 태그 자체도 숨김 처리 (안전장치) */
-    header .header_i > nav {
-        display: none !important;
-    }
+  header {
+    padding: 0 20px;
+  }
 
-    /* 햄버거 버튼 보이기 */
-    .hamburger {
-        display: block;
-        width: 30px;
-        height: 24px;
-        position: relative;
-        cursor: pointer;
-        z-index: 1001;
-    }
-    .hamburger span {
-        display: block;
-        width: 100%;
-        height: 3px;
-        background-color: #000;
-        position: absolute;
-        transition: 0.3s;
-    }
-    .hamburger span:nth-child(1) { top: 0; }
-    .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-    .hamburger span:nth-child(3) { bottom: 0; }
+  header .header_i nav.desktop_nav {
+    display: none !important;
+  }
 
-    /* 햄버거 Active 애니메이션 */
-    .hamburger.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+  header .header_i>nav {
+    display: none !important;
+  }
 
-    /* 모바일 메뉴 오버레이 */
-    .mobile_nav {
-        display: flex; /* block 대신 flex로 변경하여 중앙 정렬 보장 */
-        position: fixed;
-        top: 0; right: -100%;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.95);
-        z-index: 1000;
-        transition: 0.4s ease;
-        justify-content: center;
-        align-items: center;
-        opacity: 0; /* 평소엔 투명하게 */
-        visibility: hidden; /* 클릭 안되게 숨김 */
-    }
-    
-    /* 활성화 되었을 때 */
-    .mobile_nav.active { 
-        right: 0; 
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .mobile_nav ul {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        text-align: center;
-    }
-    .mobile_nav ul li a {
-        font-size: 32px;
-        color: #000;
-    }
+  .hamburger {
+    display: block;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1001;
+  }
 
-    /* Layout Adjustments */
-    section { padding: 60px 20px; }
-    
-    /* About Me */
-    #aboutme { height: auto; min-height: 100vh; }
-    #aboutme .aboutme_i .am_box { flex-direction: column; }
-    #aboutme .aboutme_i .am_box .profile {
-        max-width: 100%; width: 100%;
-        display: flex; flex-direction: row; justify-content: space-between; gap: 20px;
-    }
-    #aboutme .aboutme_i .am_box .profile .up {
-        width: 40%; border-bottom: none; border-right: 2px solid #000;
-        margin-bottom: 0; padding-bottom: 0; justify-content: center;
-    }
-    #aboutme .aboutme_i .am_box .profile .down { width: 55%; justify-content: center; }
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    position: absolute;
+    transition: 0.3s;
+  }
 
-    /* Portfolio */
-    #portfolio { height: auto; min-height: 100vh; }
-    #portfolio .portfolio_i .contents { flex-direction: column; }
-    #portfolio .portfolio_i .contents .left { width: 100%; margin-bottom: 20px; }
-    #portfolio .portfolio_i .contents .left nav ul { display: flex; flex-direction: column; }
-    #portfolio .portfolio_i .contents .left nav .arrow { left: 250px; }
+  .hamburger span:nth-child(1) {
+    top: 0;
+  }
 
-    #portfolio .portfolio_i .contents .left .pf_footer {
-        display: none !important;
-    }
-    
-    /* Contact */
-    #contact { height: auto; padding-bottom: 100px; }
+  .hamburger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hamburger span:nth-child(3) {
+    bottom: 0;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+
+  .mobile_nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
+    transition: 0.4s ease;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .mobile_nav.active {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile_nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .mobile_nav ul li a {
+    font-size: 32px;
+    color: #000;
+  }
+
+.pixel-text-container {
+  gap: 8px;
 }
 
-/* --- 2. Mobile (Max 767px) --- */
+.pixel-char {
+  gap: 2px;
+}
+
+.pixel-dot {
+  width: 14px;
+  height: 14px;
+}
+
+  section {
+    padding: 60px 20px;
+  }
+
+  #aboutme {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  #aboutme .aboutme_i .am_box {
+    flex-direction: column;
+  }
+
+  #aboutme .aboutme_i .am_box .profile {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  #aboutme .aboutme_i .am_box .profile .up {
+    width: 40%;
+    border-bottom: none;
+    border-right: 2px solid #000;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    justify-content: center;
+  }
+
+  #aboutme .aboutme_i .am_box .profile .down {
+    width: 55%;
+    justify-content: center;
+  }
+
+  #portfolio {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  #portfolio .portfolio_i .contents {
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  #portfolio .portfolio_i .contents .left {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #portfolio .portfolio_i .contents .left nav ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #portfolio .portfolio_i .contents .left nav .arrow {
+    display: none;
+  }
+
+  #portfolio .portfolio_i .contents .left .pf_footer {
+    display: none;
+  }
+
+  #contact {
+    height: auto;
+    padding-bottom: 100px;
+  }
+}
+
 @media screen and (max-width: 767px) {
-    h1 { font-size: 28px; }
-    h2 { font-size: 20px; }
-    p, span { font-size: 14px; }
-    #top { right: 20px; bottom: 20px; }
-    #top a { width: 40px; height: 40px; font-size: 12px; }
-    #banner .banner_i .b_text h2 { font-size: 24px; }
-    
-    /* About Me - Mobile Stack */
-    #aboutme .aboutme_i .am_box .profile { flex-direction: column; }
-    #aboutme .aboutme_i .am_box .profile .up {
-        width: 100%; border-right: none; border-bottom: 2px solid #000;
-        padding-bottom: 20px; margin-bottom: 20px;
-    }
-    #aboutme .aboutme_i .am_box .profile .down { width: 100%; }
-    
-    #aboutme .aboutme_i .am_box .skill { display: flex; flex-direction: column; gap: 20px; }
-    #aboutme .aboutme_i .am_box .skill .s4 .item_box { display: flex; flex-direction: column; align-items: flex-start; }
-    #aboutme .aboutme_i .am_box .skill .s4 .item_box .item { width: 100%; border-bottom: 1px dashed #ddd; padding: 10px 0; }
+  h1 {
+    font-size: 28px;
+  }
 
-    /* Portfolio */
-    #portfolio .portfolio_i .contents .right { padding: 15px; }
-    #portfolio .portfolio_i .contents .right .pf_item { flex-direction: column-reverse; }
-    #portfolio .portfolio_i .contents .right .pf_item .img { height: 300px; margin-bottom: 20px; }
-    #portfolio .portfolio_i .contents .right .pf_item .img img { width: 80%; }
-    #portfolio .portfolio_i .contents .left nav .arrow { left: auto; right: 20px; }
+  h2 {
+    font-size: 18px;
+  }
 
-    /* Contact */
-    #contact .contact_i .msg h1 { font-size: 24px; }
-    #contact .contact_i .info { width: 100%; padding: 20px; }
-    #contact .contact_i .info .info_i .row dd { font-size: 16px; word-break: break-all; }
+  p,
+  span {
+    font-size: 14px;
+  }
+
+  #top {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  #top a {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .pixel-text-container {
+  gap: 4px;
+}
+
+.pixel-char {
+  gap: 1px;
+}
+
+.pixel-dot {
+  width: 6px;
+  height: 6px;
+}
+
+  #banner .banner_i .b_text h2 {
+    font-size: 24px;
+  }
+
+  #aboutme .aboutme_i .am_box .profile {
+    flex-direction: column;
+  }
+
+  #aboutme .aboutme_i .am_box .profile .up {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  #aboutme .aboutme_i .am_box .profile .down {
+    width: 100%;
+  }
+
+  #aboutme .aboutme_i .am_box .skill {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #aboutme .aboutme_i .am_box .skill .s4 .item_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #aboutme .aboutme_i .am_box .skill .s4 .item_box .item {
+    width: 100%;
+    border-bottom: 1px dashed #ddd;
+    padding: 10px 0;
+  }
+
+  #portfolio .portfolio_i .contents .right {
+    padding: 15px;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item {
+    flex-direction: column;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .img {
+    display: grid;
+    gap: 8px;
+    justify-items: center;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .img img {
+    position: relative;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .img .bbq2 {
+    top: auto;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .img .star2 {
+    top: auto;
+    left: auto;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .img .star3 {
+    top: auto;
+    right: auto;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .img .bone2 {
+    top: auto;
+    right: auto;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .img .bone3 {
+    top: auto;
+    right: auto;
+  }
+
+  #portfolio .portfolio_i .contents .left nav .arrow {
+    left: auto;
+    right: 20px;
+  }
+
+  #contact .contact_i .msg h1 {
+    font-size: 24px;
+  }
+
+  #contact .contact_i .info {
+    width: 100%;
+    padding: 20px;
+  }
+
+  #contact .contact_i .info .info_i .row dd {
+    font-size: 16px;
+  }
 }
