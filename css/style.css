@@ -143,14 +143,12 @@ header .header_i nav ul {
   gap: 16px;
 }
 
-/* 개별 글자 박스 */
 .pixel-char {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5칸 너비 기준 */
-  gap: 2px; /* 도트 사이 간격 */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
 }
 
-/* 실제 도트 (네모 점) */
 .pixel-dot {
   width: 18px;
   height: 18px;
@@ -160,7 +158,6 @@ header .header_i nav ul {
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-in;
 }
 
-/* 애니메이션 클래스가 붙으면 제자리로 */
 .pixel-dot.active {
   opacity: 1;
   transform: translate(0, 0) scale(1);
@@ -176,6 +173,19 @@ header .header_i nav ul {
 #banner .banner_i .b_text h2 {
   font-size: 32px;
   text-align: center;
+}
+
+/* 타이핑 커서 효과 */
+.typing-cursor::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink-cursor 0.8s infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 #banner .banner_i .down {
@@ -517,7 +527,7 @@ header .header_i nav ul {
   position: absolute;
   left: 290px;
   top: 0;
-  transition: top 0.3s;
+  transition: top;
   z-index: 10;
   animation: blink 1s infinite step-end;
 }
@@ -913,8 +923,11 @@ footer .footer_i p {
     flex-direction: column;
   }
 
-  #portfolio .portfolio_i .contents .left nav .arrow {
-    display: none;
+    #portfolio .portfolio_i .contents .left nav .arrow {
+    color: #fff;
+    left: auto;
+    right: 20px;
+    rotate: 90deg;
   }
 
   #portfolio .portfolio_i .contents .left .pf_footer {
@@ -1043,11 +1056,6 @@ footer .footer_i p {
   #portfolio .portfolio_i .contents .right .pf_item .img .bone3 {
     top: auto;
     right: auto;
-  }
-
-  #portfolio .portfolio_i .contents .left nav .arrow {
-    left: auto;
-    right: 20px;
   }
 
   #contact .contact_i .msg h1 {
