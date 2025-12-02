@@ -1,5 +1,11 @@
 $(function () {
   // 1. 초기화 & 전역 설정
+  $(".box.s2, .box.s3, .box.s4").attr("data-aos-anchor", ".box.s1");
+  $(".box.s1").attr("data-aos-delay", "0");
+  $(".box.s2").attr("data-aos-delay", "200");
+  $(".box.s3").attr("data-aos-delay", "400");
+  $(".box.s4").attr("data-aos-delay", "600");
+
   AOS.init({ duration: 1000, once: true });
 
   const $navItems = $("#portfolio .left nav ul li");
@@ -8,11 +14,11 @@ $(function () {
   const $mobileNav = $(".mobile_nav");
   const $topBtn = $("#top").hide();
 
-  // 2. 탭 & 화살표 (CSS transition 권장)
+  // 2. 탭 & 화살표
   function moveArrow($target) {
     if (!$target.length) return;
     const topPos = $target.position().top + $target.outerHeight() / 2 - $arrow.outerHeight() / 2;
-    $arrow.css("top", topPos); // CSS에 #portfolio .arrow { transition: top 0.3s; } 추가 권장
+    $arrow.css("top", topPos);
   }
 
   $navItems.on("click", "a", function (e) {

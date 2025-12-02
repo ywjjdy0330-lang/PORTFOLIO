@@ -758,7 +758,7 @@ header .header_i nav ul li a.active {
   width: fit-content;
   text-align: center;
   padding: 30px;
-  border: 1px dashed #777;
+  border: 2px dashed #777;
   background-color: #f9f9f9;
 }
 
@@ -810,11 +810,11 @@ footer .footer_i p {
   }
 
   header .header_i nav.desktop_nav {
-    display: none !important;
+    display: none ;
   }
 
   header .header_i>nav {
-    display: none !important;
+    display: none ;
   }
 
   .hamburger {
