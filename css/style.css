@@ -84,6 +84,26 @@ header .header_i nav ul {
   font-size: 24px;
 }
 
+header .header_i nav ul li a {
+  position: relative;
+  display: block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+header .header_i nav ul li a:hover {
+  background-color: #000;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+}
+
+header .header_i nav ul li a.active {
+  background-color: #000;
+  color: #fff;
+}
+
 .hamburger,
 .mobile_nav {
   display: none;
@@ -382,6 +402,7 @@ header .header_i nav ul {
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 4px 4px 0px #000;
+  overflow: hidden;
 }
 
 
@@ -513,12 +534,21 @@ header .header_i nav ul {
   width: 100%;
   height: 100%;
   padding: 16px 18px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
 }
 
 #portfolio .portfolio_i .contents .left nav ul li span {
   font-size: 22px;
   margin-right: 6px;
   color: #000;
+}
+
+#portfolio .left nav ul li a:hover {
+  transform: translateX(10px);
+}
+
+#portfolio .left nav ul li.active a {
+  transform: translateX(10px);
 }
 
 #portfolio .portfolio_i .contents .left nav ul li.active {

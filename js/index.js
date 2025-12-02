@@ -1,91 +1,69 @@
-$(document).ready(function () {
+$(function () {
+  // 1. 초기화 & 전역 설정
+  AOS.init({ duration: 1000, once: true });
 
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-  // ==========================================
-  // 1. 변수 설정
-  // ==========================================
   const $navItems = $("#portfolio .left nav ul li");
-  const $navLinks = $("#portfolio .left nav ul li a");
-  const $pfItems = $(".pf_item");
   const $arrow = $("#portfolio .left nav .arrow");
   const $hamburger = $(".hamburger");
   const $mobileNav = $(".mobile_nav");
-  const $mobileLinks = $(".mobile_nav a");
+  const $topBtn = $("#top").hide();
 
-  // ==========================================
-  // 2. 탭 & 화살표 기능
-  // ==========================================
-  function moveArrow($targetLi) {
-    const topPos = $targetLi.position().top + ($targetLi.outerHeight() / 2) - ($arrow.outerHeight() / 2);
-    $arrow.stop().animate({ top: topPos }, 0);
+  // 2. 탭 & 화살표 (CSS transition 권장)
+  function moveArrow($target) {
+    if (!$target.length) return;
+    const topPos = $target.position().top + $target.outerHeight() / 2 - $arrow.outerHeight() / 2;
+    $arrow.css("top", topPos); // CSS에 #portfolio .arrow { transition: top 0.3s; } 추가 권장
   }
 
-  $navLinks.on("click", function (e) {
+  $navItems.on("click", "a", function (e) {
     e.preventDefault();
-    const $thisLi = $(this).parent("li");
+    const $li = $(this).parent();
     const targetId = $(this).attr("href");
 
-    $thisLi.addClass("active").siblings().removeClass("active");
+    $li.addClass("active").siblings().removeClass("active");
     $(targetId).css("display", "flex").siblings(".pf_item").hide();
-    moveArrow($thisLi);
+    moveArrow($li);
   });
 
-  $navItems.eq(0).find("a").trigger("click");
-
+  // 초기 실행 및 리사이즈 이벤트
+  $navItems.first().find("a").trigger("click");
   let resizeTimer;
-  $(window).on("resize", function () {
+  $(window).on("resize", () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      const $activeLi = $("#portfolio .left nav ul li.active");
-      if ($activeLi.length) moveArrow($activeLi);
-    }, 200);
+    resizeTimer = setTimeout(() => moveArrow($navItems.filter(".active")), 200);
   });
 
-  // ==========================================
-  // 3. 모바일 햄버거 메뉴
-  // ==========================================
+  // 3. 모바일 메뉴
   $hamburger.on("click", function () {
-    $(this).toggleClass("active");
-    $mobileNav.toggleClass("active");
+    $(this).add($mobileNav).toggleClass("active");
   });
+  $(".mobile_nav a").on("click", () => $hamburger.add($mobileNav).removeClass("active"));
 
-  $mobileLinks.on("click", function () {
-    $hamburger.removeClass("active");
-    $mobileNav.removeClass("active");
-  });
-
-  // ==========================================
-  // 4. 픽셀 아트 애니메이션 (PORTFOLIO)
-  // ==========================================
+  // 4. 픽셀 아트 (데이터 압축)
   const charMap = {
-    P: [[1, 1, 1, 1, 0], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]],
-    O: [[0, 1, 1, 1, 0], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [0, 1, 1, 1, 0]],
-    R: [[1, 1, 1, 1, 0], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 0], [1, 0, 1, 0, 0], [1, 0, 0, 1, 0], [1, 0, 0, 0, 1]],
-    T: [[1, 1, 1, 1, 1], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0]],
-    F: [[1, 1, 1, 1, 1], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 1, 1, 1, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0]],
-    L: [[1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 1, 1, 1, 1]],
-    I: [[0, 1, 1, 1, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0], [0, 1, 1, 1, 0]]
+    P: ["11110", "10001", "10001", "11110", "10000", "10000", "10000"],
+    O: ["01110", "10001", "10001", "10001", "10001", "10001", "01110"],
+    R: ["11110", "10001", "10001", "11110", "10100", "10010", "10001"],
+    T: ["11111", "00100", "00100", "00100", "00100", "00100", "00100"],
+    F: ["11111", "10000", "10000", "11110", "10000", "10000", "10000"],
+    L: ["10000", "10000", "10000", "10000", "10000", "10000", "11111"],
+    I: ["01110", "00100", "00100", "00100", "00100", "00100", "01110"]
   };
 
-  const textString = "PORTFOLIO";
-  const $dotContainer = $(".b_dot");
-
-  $dotContainer.empty();
+  const $dotContainer = $(".b_dot").empty();
   const $textWrapper = $("<div>").addClass("pixel-text-container");
 
-  $.each(textString.split(""), function (i, char) {
-    const charGrid = charMap[char];
-    if (!charGrid) return;
+  "PORTFOLIO".split("").forEach(char => {
+    const grid = charMap[char] || [];
     const $charDiv = $("<div>").addClass("pixel-char");
-    $.each(charGrid, function (rowIdx, row) {
-      $.each(row, function (colIdx, col) {
-        if (col === 1) {
-          const randomX = (Math.random() - 0.5) * 2000;
-          const randomY = (Math.random() - 0.5) * 2000;
-          $("<div>").addClass("pixel-dot").css({ "--rx": randomX + "px", "--ry": randomY + "px" }).appendTo($charDiv);
+
+    grid.forEach(row => {
+      [...row].forEach(col => {
+        if (col === "1") {
+          const rand = (n) => (Math.random() - 0.5) * n;
+          $("<div>").addClass("pixel-dot")
+            .css({ "--rx": `${rand(2000)}px`, "--ry": `${rand(2000)}px` })
+            .appendTo($charDiv);
         } else {
           $("<div>").appendTo($charDiv);
         }
@@ -93,70 +71,65 @@ $(document).ready(function () {
     });
     $textWrapper.append($charDiv);
   });
+
   $dotContainer.append($textWrapper);
 
-  setTimeout(function () {
+  // 픽셀 애니메이션 시작
+  setTimeout(() => {
     $(".pixel-dot").each(function () {
-      const $dot = $(this);
-      setTimeout(function () {
-        $dot.addClass("active");
-      }, Math.random() * 500);
+      setTimeout(() => $(this).addClass("active"), Math.random() * 500);
     });
   }, 100);
 
-  // ==========================================
-  // 5. 배너 텍스트 타이핑 효과
-  // ==========================================
-  const $typingTarget = $(".b_text h2");
-  const typingText = "Web Publisher <br> Portfolio Ver 1.0.0";
+  // 5. 타이핑 효과 (HTML 태그 처리 간소화)
+  const $typingTarget = $(".b_text h2").addClass("typing-cursor");
+  const text = "Web Publisher <br> Portfolio Ver 1.0.0";
+  let idx = 0;
 
-  $typingTarget.html("").addClass("typing-cursor");
-
-  let i = 0;
-  function typeWriter() {
-    if (i < typingText.length) {
-      if (typingText.charAt(i) === "<") {
-        let tag = "";
-        while (typingText.charAt(i) !== ">") {
-          tag += typingText.charAt(i);
-          i++;
-        }
-        tag += ">";
-        $typingTarget.html($typingTarget.html() + tag);
-        i++;
+  (function type() {
+    if (idx < text.length) {
+      // <br> 태그 감지 시 한번에 처리
+      if (text.substring(idx).startsWith("<br>")) {
+        $typingTarget.html($typingTarget.html() + "<br>");
+        idx += 4;
       } else {
-        $typingTarget.html($typingTarget.html() + typingText.charAt(i));
-        i++;
+        $typingTarget.html($typingTarget.html() + text.charAt(idx++));
       }
-      setTimeout(typeWriter, 50);
-    } else {
+      setTimeout(type, 50);
     }
-  }
+  })();
 
-  setTimeout(typeWriter, 1000);
-
-  // ==========================================
-  // 6. TOP 버튼 기능 (기존 코드 유지)
-  // ==========================================
-  const $topBtn = $("#top");
-
-  $topBtn.hide();
-
+  // 6. TOP 버튼 & 이메일 복사
   $(window).on("scroll", function () {
-    if ($(this).scrollTop() > 300) {
-      $topBtn.fadeIn();
-    } else {
-      $topBtn.fadeOut();
+    $(this).scrollTop() > 300 ? $topBtn.fadeIn() : $topBtn.fadeOut();
+  });
+
+  $(".info_i .row:nth-child(2) dd").css("cursor", "pointer").on("click", async function () {
+    const email = "ywjjdy0330@gmail.com";
+    try {
+      await navigator.clipboard.writeText(email);
+      alert(`이메일이 복사되었습니다: ${email}`);
+    } catch (err) {
+      console.error("복사 실패:", err);
     }
   });
-});
-// 이메일 클릭 시 복사 기능
-$(".info_i .row:nth-child(2) dd").css("cursor", "pointer").on("click", function () {
-  const emailText = "ywjjdy0330@gmail.com";
 
-  navigator.clipboard.writeText(emailText).then(() => {
-    alert("이메일 주소가 복사되었습니다: " + emailText);
-  }).catch(err => {
-    console.error('복사 실패:', err);
+  // 7. 헤더 메뉴 스크롤 스파이 (Scroll Spy)
+  const $headerLinks = $("header .header_i nav ul li a");
+  const $sections = $("section");
+
+  $(window).on("scroll", function () {
+    const currentPos = $(this).scrollTop() + 100;
+
+    $sections.each(function () {
+      const top = $(this).offset().top;
+      const bottom = top + $(this).outerHeight();
+      const id = $(this).attr("id");
+
+      if (currentPos >= top && currentPos < bottom) {
+        $headerLinks.removeClass("active");
+        $headerLinks.filter(`[href="#${id}"]`).addClass("active");
+      }
+    });
   });
 });
