@@ -1,36 +1,9 @@
 @import url(./reset.css);
 @import url(./font.css);
 
-:root {
-  --main-color: #000;
-  /* 메인 포인트 (텍스트, 테두리, 버튼, 그림자) */
-  --bg-color: #f9f9f9;
-  /* 전체 배경색 */
-  --white: #fff;
-  /* 흰색 (박스 배경, 텍스트 반전) */
-  --dot-color: #333;
-  /* 배너 픽셀 도트 */
-  --text-gray-1: #444;
-  /* 프로세스 텍스트 */
-  --text-gray-2: #555;
-  /* 설명 본문 텍스트 */
-  --text-gray-3: #666;
-  /* Contact 라벨 */
-  
-  --line-gray-1: #777;
-  /* Contact 점선 테두리, Nav 라인 */
-  --line-gray-2: #888;
-  /* 프로젝트 제목 밑줄 */
-  
-  --border-light: #eee;
-  /* 연한 테두리 (박스 내부) */
-  --border-mid: #ddd;
-  /* 중간 테두리 (모바일 등) */
-}
-
 body {
   position: relative;
-  background-color: var(--bg-color);
+  background-color: #f9f9f9;
   font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   letter-spacing: 0.02em;
 }
@@ -85,9 +58,9 @@ header {
   padding: 0 20px;
   position: sticky;
   top: 0;
-  background-color: var(--white);
+  background-color: #fff;
   z-index: 999;
-  border-bottom: 2px solid var(--main-color);
+  border-bottom: 2px solid #000;
   align-content: center;
   transition: top 0.3s ease;
 }
@@ -125,15 +98,15 @@ header .header_i nav ul li a {
 }
 
 header .header_i nav ul li a:hover {
-  background-color: var(--main-color);
-  color: var(--white);
+  background-color: #000;
+  color: #fff;
   transform: translateY(-2px);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2); /* 투명도는 유지 */
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 header .header_i nav ul li a.active {
-  background-color: var(--main-color);
-  color: var(--white);
+  background-color: #000;
+  color: #fff;
 }
 
 .hamburger,
@@ -156,9 +129,9 @@ header .header_i nav ul li a.active {
   align-items: center;
   text-align: center;
   border-radius: 4px;
-  border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  background-color: var(--white);
+  border: 2px solid #000;
+  box-shadow: 4px 4px #000;
+  background-color: #fff;
 }
 
 /* #banner */
@@ -204,7 +177,7 @@ header .header_i nav ul li a.active {
 .pixel-dot {
   width: 18px;
   height: 18px;
-  background-color: var(--dot-color); /* 변수 적용 (#333) */
+  background-color: #333;
   opacity: 0;
   transform: translate(var(--rx), var(--ry)) scale(0);
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-in;
@@ -294,9 +267,9 @@ header .header_i nav ul li a.active {
 #aboutme .aboutme_i .am_box .profile {
   max-width: 366px;
   padding: 20px;
-  border: 2px solid var(--main-color);
+  border: 2px solid #000;
   border-radius: 4px;
-  background-color: var(--bg-color);
+  background-color: #f9f9f9;
 }
 
 #aboutme .aboutme_i .am_box .profile .up {
@@ -306,7 +279,7 @@ header .header_i nav ul li a.active {
   align-items: center;
   gap: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--main-color);
+  border-bottom: 2px solid #000;
   margin-bottom: 16px;
 }
 
@@ -316,8 +289,8 @@ header .header_i nav ul li a.active {
   background-image: url(../img/profile.jpg);
   background-position: center center;
   background-size: cover;
-  border: 1px solid var(--main-color);
-  outline: 1px solid var(--main-color);
+  border: 1px solid #000;
+  outline: 1px solid #000;
   outline-offset: 1px;
 }
 
@@ -382,7 +355,7 @@ header .header_i nav ul li a.active {
   top: -0px;
   width: 2px;
   height: 100%;
-  background-color: var(--main-color);
+  background-color: #000;
 }
 
 #aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li::after {
@@ -392,7 +365,7 @@ header .header_i nav ul li a.active {
   top: 40%;
   width: 14px;
   height: 2px;
-  background-color: var(--main-color);
+  background-color: #000;
 }
 
 #aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li:last-child::before {
@@ -430,10 +403,10 @@ header .header_i nav ul li a.active {
   gap: 16px;
   flex: 1;
   padding: 20px;
-  border: 2px solid var(--main-color);
+  border: 2px solid #000;
   border-radius: 4px;
-  background-color: var(--white);
-  box-shadow: 4px 4px 0px var(--main-color);
+  background-color: #fff;
+  box-shadow: 4px 4px 0px #000;
   overflow: hidden;
 }
 
@@ -473,8 +446,8 @@ header .header_i nav ul li a.active {
 #aboutme .aboutme_i .am_box .skill .box h2 {
   width: 100%;
   height: 40px;
-  background-color: var(--main-color);
-  color: var(--white);
+  background-color: #000;
+  color: #fff;
   border-radius: 4px;
   padding-left: 16px;
   align-content: center;
@@ -484,7 +457,7 @@ header .header_i nav ul li a.active {
   display: flex;
   flex: 1;
   align-items: center;
-  border-bottom: 1px dashed var(--border-light); /* 변수 적용 (#eee) */
+  border-bottom: 1px dashed #eee;
   padding: 8px 0;
 }
 
@@ -547,7 +520,7 @@ header .header_i nav ul li a.active {
 }
 
 #portfolio .portfolio_i .contents .left nav ul {
-  border-left: 2px solid var(--line-gray-1); /* 변수 적용 (#777) */
+  border-left: 2px solid #777;
   padding-left: 10px;
 }
 
@@ -561,7 +534,7 @@ header .header_i nav ul li a.active {
 
 #portfolio .portfolio_i .contents .left nav ul li a {
   text-decoration: none;
-  color: var(--main-color);
+  color: #000;
   display: block;
   width: 100%;
   height: 100%;
@@ -572,7 +545,7 @@ header .header_i nav ul li a.active {
 #portfolio .portfolio_i .contents .left nav ul li span {
   font-size: 22px;
   margin-right: 6px;
-  color: var(--main-color);
+  color: #000;
 }
 
 #portfolio .left nav ul li a:hover {
@@ -584,13 +557,13 @@ header .header_i nav ul li a.active {
 }
 
 #portfolio .portfolio_i .contents .left nav ul li.active {
-  background-color: var(--main-color);
-  color: var(--white);
+  background-color: #000;
+  color: #fff;
 }
 
 #portfolio .portfolio_i .contents .left nav ul li.active a,
 #portfolio .portfolio_i .contents .left nav ul li.active span {
-  color: var(--white);
+  color: #fff;
 }
 
 
@@ -605,11 +578,11 @@ header .header_i nav ul li a.active {
 }
 
 #portfolio .portfolio_i .contents .right {
-  border: 2px solid var(--main-color);
+  border: 2px solid #000;
   border-radius: 4px;
   padding: 30px;
-  background-color: var(--white);
-  box-shadow: 4px 4px 0px var(--main-color);
+  background-color: #fff;
+  box-shadow: 4px 4px 0px #000;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item {
@@ -644,13 +617,13 @@ header .header_i nav ul li a.active {
 #portfolio .portfolio_i .contents .right .pf_item .text h3 {
   font-size: 18px;
   padding-left: 16px;
-  border-left: 4px solid var(--main-color);
+  border-left: 4px solid #000;
   margin-bottom: 12px;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .text .t_title span {
-  color: var(--line-gray-2); 
-  border-bottom: 1px solid var(--line-gray-2); 
+  color: #888;
+  border-bottom: 1px solid #888;
   margin-bottom: 20px;
   display: inline-block;
 }
@@ -663,7 +636,7 @@ header .header_i nav ul li a.active {
 
 #portfolio .portfolio_i .contents .right .pf_item .text .t_title p {
   font-size: 18px;
-  color: var(--text-gray-2);
+  color: #555;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .text .info {
@@ -679,16 +652,16 @@ header .header_i nav ul li a.active {
 
 #portfolio .portfolio_i .contents .right .pf_item .text .info .info_row dt {
   width: 55px;
-  color: var(--text-gray-2);
+  color: #555;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .text .process div {
   padding: 16px;
   font-size: 14px;
-  background-color: var(--bg-color);
-  color: var(--text-gray-1);
+  background-color: #f9f9f9;
+  color: #444;
   line-height: 1.5;
-  border: 1px dashed var(--main-color);
+  border: 1px dashed #000;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .text .btn {
@@ -698,9 +671,9 @@ header .header_i nav ul li a.active {
 
 #portfolio .portfolio_i .contents .right .pf_item .text .btn a {
   padding: 14px 10px;
-  border: 2px solid var(--main-color);
+  border: 2px solid #000;
   border-radius: 4px;
-  box-shadow: 4px 4px 0 var(--main-color);
+  box-shadow: 4px 4px 0 #000;
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img {
@@ -709,7 +682,7 @@ header .header_i nav ul li a.active {
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img img {
-  border: 2px solid var(--main-color);
+  border: 2px solid #000;
   border-radius: 4px;
   position: absolute;
 }
@@ -768,7 +741,7 @@ header .header_i nav ul li a.active {
   bottom: 0;
   width: 1em;
   height: 6px;
-  background-color: var(--main-color);
+  background-color: #000;
   animation: blink 1.5s infinite step-end;
 }
 
@@ -794,8 +767,8 @@ header .header_i nav ul li a.active {
   width: fit-content;
   text-align: center;
   padding: 30px;
-  border: 2px dashed var(--line-gray-1);
-  background-color: var(--bg-color);
+  border: 2px dashed #777;
+  background-color: #f9f9f9;
 }
 
 #contact .contact_i .info h2 {
@@ -810,12 +783,12 @@ header .header_i nav ul li a.active {
 
 #contact .contact_i .info .info_i .row:not(:last-of-type) {
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-mid);
+  border-bottom: 1px solid #ddd;
 }
 
 #contact .contact_i .info .info_i .row dt {
   font-size: 20px;
-  color: var(--text-gray-3);
+  color: #666;
   margin-bottom: 8px;
 }
 
@@ -866,7 +839,7 @@ footer .footer_i p {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--main-color);
+    background-color: #000;
     position: absolute;
     transition: 0.3s;
   }
@@ -905,7 +878,7 @@ footer .footer_i p {
     right: -100%;
     width: 100%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.95); /* rgba는 그대로 유지 */
+    background-color: rgba(255, 255, 255, 0.95);
     z-index: 1000;
     transition: 0.4s ease;
     justify-content: center;
@@ -929,7 +902,7 @@ footer .footer_i p {
 
   .mobile_nav ul li a {
     font-size: 32px;
-    color: var(--main-color);
+    color: #000;
   }
 
   .pixel-text-container {
@@ -970,7 +943,7 @@ footer .footer_i p {
   #aboutme .aboutme_i .am_box .profile .up {
     width: 40%;
     border-bottom: none;
-    border-right: 2px solid var(--main-color);
+    border-right: 2px solid #000;
     margin-bottom: 0;
     padding-bottom: 0;
     justify-content: center;
@@ -1002,7 +975,7 @@ footer .footer_i p {
   }
 
   #portfolio .portfolio_i .contents .left nav .arrow {
-    color: var(--white);
+    color: #fff;
     left: auto;
     right: 20px;
     rotate: 90deg;
@@ -1067,7 +1040,7 @@ footer .footer_i p {
   #aboutme .aboutme_i .am_box .profile .up {
     width: 100%;
     border-right: none;
-    border-bottom: 2px solid var(--main-color);
+    border-bottom: 2px solid #000;
     padding-bottom: 20px;
     margin-bottom: 20px;
   }
@@ -1094,7 +1067,7 @@ footer .footer_i p {
 
   #aboutme .aboutme_i .am_box .skill .s4 .item_box .item {
     width: 100%;
-    border-bottom: 1px dashed var(--border-mid);
+    border-bottom: 1px dashed #ddd;
     padding: 10px 0;
   }
 
