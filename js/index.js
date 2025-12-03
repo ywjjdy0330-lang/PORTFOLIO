@@ -1,10 +1,6 @@
 $(function () {
   // 1. 초기화 & 전역 설정
   $(".box.s2, .box.s3, .box.s4").attr("data-aos-anchor", ".box.s1");
-  $(".box.s1").attr("data-aos-delay", "0");
-  $(".box.s2").attr("data-aos-delay", "200");
-  $(".box.s3").attr("data-aos-delay", "400");
-  $(".box.s4").attr("data-aos-delay", "600");
 
   AOS.init({ duration: 1000, once: true });
 
@@ -88,11 +84,12 @@ $(function () {
   }, 100);
 
   // 5. 타이핑 효과 (HTML 태그 처리 간소화)
+// 5. 타이핑 효과 (수정됨: 딜레이 추가)
   const $typingTarget = $(".b_text h2").addClass("typing-cursor");
   const text = "Web Publisher <br> Portfolio Ver 1.0.0";
   let idx = 0;
 
-  (function type() {
+  function type() {
     if (idx < text.length) {
       // <br> 태그 감지 시 한번에 처리
       if (text.substring(idx).startsWith("<br>")) {
@@ -101,9 +98,13 @@ $(function () {
       } else {
         $typingTarget.html($typingTarget.html() + text.charAt(idx++));
       }
-      setTimeout(type, 50);
+      setTimeout(type, 50); // 글자 타이핑 속도
     }
-  })();
+  }
+
+  // ▲ 위쪽의 PORTFOLIO 픽셀 애니메이션이 얼추 끝난 뒤 시작하도록 
+  // 2000ms (2초) 딜레이를 주었습니다. 숫자를 조절해 타이밍을 맞추세요.
+  setTimeout(type, 1000);
 
   // 6. TOP 버튼 & 이메일 복사
   $(window).on("scroll", function () {
@@ -137,5 +138,25 @@ $(function () {
         $headerLinks.filter(`[href="#${id}"]`).addClass("active");
       }
     });
+  });
+
+  // 8. 스크롤 시 헤더 숨김/표시 (Smart Header)
+  let lastScrollTop = 0;
+  const $header = $("header");
+
+  $(window).on("scroll", function() {
+    let currentScroll = $(this).scrollTop();
+
+    // 스크롤을 내리고 있고 & 현재 위치가 헤더 높이보다 아래라면 -> 숨김
+    if (currentScroll > lastScrollTop && currentScroll > 80) {
+      $header.addClass("hide");
+    } 
+    // 스크롤을 올리고 있거나 & 최상단에 도달했다면 -> 보임
+    else {
+      $header.removeClass("hide");
+    }
+
+    // 현재 스크롤 위치를 '이전 위치'로 저장 (다음 번 비교를 위해)
+    lastScrollTop = currentScroll;
   });
 });
