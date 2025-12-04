@@ -1,5 +1,5 @@
 $(function () {
-  // 1. 초기화 & 전역 설정
+  // 설정
   $(".box.s2, .box.s3, .box.s4").attr("data-aos-anchor", ".box.s1");
 
   AOS.init({ duration: 1000, once: true });
@@ -10,7 +10,7 @@ $(function () {
   const $mobileNav = $(".mobile_nav");
   const $topBtn = $("#top").hide();
 
-  // 2. 탭 & 화살표
+  // 화살표
   function moveArrow($target) {
     if (!$target.length) return;
     const topPos = $target.position().top + $target.outerHeight() / 2 - $arrow.outerHeight() / 2;
@@ -27,7 +27,7 @@ $(function () {
     moveArrow($li);
   });
 
-  // 초기 실행 및 리사이즈 이벤트
+  // 이벤트
   $navItems.first().find("a").trigger("click");
   let resizeTimer;
   $(window).on("resize", () => {
@@ -35,13 +35,13 @@ $(function () {
     resizeTimer = setTimeout(() => moveArrow($navItems.filter(".active")), 200);
   });
 
-  // 3. 모바일 메뉴
+  // 모바일 메뉴
   $hamburger.on("click", function () {
     $(this).add($mobileNav).toggleClass("active");
   });
   $(".mobile_nav a").on("click", () => $hamburger.add($mobileNav).removeClass("active"));
 
-  // 4. 픽셀 아트 (데이터 압축)
+  // 픽셀
   const charMap = {
     P: ["11110", "10001", "10001", "11110", "10000", "10000", "10000"],
     O: ["01110", "10001", "10001", "10001", "10001", "10001", "01110"],
@@ -76,14 +76,14 @@ $(function () {
 
   $dotContainer.append($textWrapper);
 
-  // 픽셀 애니메이션 시작
+  // 애니메이션
   setTimeout(() => {
     $(".pixel-dot").each(function () {
       setTimeout(() => $(this).addClass("active"), Math.random() * 500);
     });
   }, 100);
 
-  // 5. 타이핑 효과 (수정됨: 딜레이 추가)
+  // 타이핑
   const $typingTarget = $(".b_text h2").addClass("typing-cursor");
   const text = "Web Publisher <br> Portfolio Ver 1.0.0";
   let idx = 0;
@@ -119,7 +119,7 @@ $(function () {
     }
   });
 
-  // 7. 헤더 메뉴 스크롤 스파이 (Scroll Spy)
+  // 헤더 메뉴 스크롤
   const $headerLinks = $("header .header_i nav ul li a");
   const $sections = $("section");
 
@@ -138,23 +138,47 @@ $(function () {
     });
   });
 
-  // 8. 스크롤 시 헤더 숨김/표시 (Smart Header)
+  // 헤더 숨김/표시
   let lastScrollTop = 0;
   const $header = $("header");
 
   $(window).on("scroll", function () {
     let currentScroll = $(this).scrollTop();
 
-    // 스크롤을 내리고 있고 & 현재 위치가 헤더 높이보다 아래라면 -> 숨김
     if (currentScroll > lastScrollTop && currentScroll > 80) {
       $header.addClass("hide");
     }
-    // 스크롤을 올리고 있거나 & 최상단에 도달했다면 -> 보임
+
     else {
       $header.removeClass("hide");
     }
 
-    // 현재 스크롤 위치를 '이전 위치'로 저장 (다음 번 비교를 위해)
+
     lastScrollTop = currentScroll;
+  });
+
+  // --- 모바일 스킬 스크롤 인터랙션 
+  $(window).on("scroll", function () {
+    if ($(window).width() <= 767) {
+
+      const windowHeight = $(window).height();
+      const scrollTop = $(window).scrollTop();
+
+      const centerPoint = scrollTop + (windowHeight / 2);
+
+      $(".skill .box").each(function () {
+        const $box = $(this);
+        const boxTop = $box.offset().top;
+        const boxBottom = boxTop + $box.outerHeight();
+
+        if (centerPoint > boxTop && centerPoint < boxBottom) {
+          $box.addClass("active-scroll");
+        } else {
+          $box.removeClass("active-scroll");
+        }
+      });
+    } else {
+      $(".skill .box").removeClass("active-scroll");
+    }
   });
 });

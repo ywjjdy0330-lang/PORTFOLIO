@@ -2,4 +2,5 @@
   font-family: 'neodgm';
   src: url('../font/neodgm.woff2') format('woff2'),
     url('../font/neodgm.woff') format('woff');
+  font-display: swap;
 }

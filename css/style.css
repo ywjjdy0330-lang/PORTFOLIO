@@ -1117,12 +1117,18 @@ footer .footer_i p {
     height: 6px;
   }
 
+  #top a:hover {
+    background-color: var(--white);
+    color: var(--main-color);
+  }
+
   #banner .banner_i .b_text h2 {
     font-size: 24px;
   }
 
   #aboutme .aboutme_i .am_box .profile {
     flex-direction: column;
+    padding: calc(50% - 110px) 20px 20px 20px;
   }
 
   #aboutme .aboutme_i .am_box .profile .up {
@@ -1147,6 +1153,12 @@ footer .footer_i p {
     gap: 20px;
   }
 
+  #aboutme .aboutme_i .am_box .skill .box:hover h2 {
+    background-color: var(--main-color);
+    transform: none;
+    box-shadow: none;
+  }
+
   #aboutme .aboutme_i .am_box .skill .s4 .item_box {
     display: flex;
     flex-direction: column;
@@ -1159,6 +1171,32 @@ footer .footer_i p {
     padding: 10px 0;
   }
 
+  /* #aboutme .aboutme_i .am_box .skill .box .item_box .item .icon {
+    filter: grayscale(0%);
+    transform: none;
+    margin-right: 16px;
+  } */
+
+  #aboutme .aboutme_i .am_box .skill .box .item_box .item .icon {
+    filter: grayscale(100%); 
+    transition: filter 0.3s ease, transform 0.3s ease;
+    margin-right: 16px;
+  }
+
+  #aboutme .aboutme_i .am_box .skill .box.active-scroll h2 {
+    background-color: var(--point-color);
+    transform: scale(1.02);
+  }
+
+  #aboutme .aboutme_i .am_box .skill .box.active-scroll .item_box .item .icon {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+  
+  #aboutme .aboutme_i .am_box .skill .box .item_box .item:hover .icon {
+    transform: none; 
+  }
+
   #portfolio .portfolio_i .contents .right {
     padding: 15px;
   }
@@ -1168,6 +1206,11 @@ footer .footer_i p {
     display: contents;
     flex-direction: column;
     gap: 24px;
+  }
+
+  #portfolio .portfolio_i .contents .right .pf_item .text .btn a:hover {
+    background-color: transparent;
+    color: var(--main-color);
   }
 
 
@@ -1251,5 +1294,9 @@ footer .footer_i p {
 
   #contact .contact_i .info .info_i .row dd {
     font-size: 16px;
+  }
+
+  #contact .contact_i .info .info_i .row dd:hover {
+    color: inherit;
   }
 }
