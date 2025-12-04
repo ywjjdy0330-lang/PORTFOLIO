@@ -83,8 +83,7 @@ $(function () {
     });
   }, 100);
 
-  // 5. 타이핑 효과 (HTML 태그 처리 간소화)
-// 5. 타이핑 효과 (수정됨: 딜레이 추가)
+  // 5. 타이핑 효과 (수정됨: 딜레이 추가)
   const $typingTarget = $(".b_text h2").addClass("typing-cursor");
   const text = "Web Publisher <br> Portfolio Ver 1.0.0";
   let idx = 0;
@@ -102,8 +101,7 @@ $(function () {
     }
   }
 
-  // ▲ 위쪽의 PORTFOLIO 픽셀 애니메이션이 얼추 끝난 뒤 시작하도록 
-  // 2000ms (2초) 딜레이를 주었습니다. 숫자를 조절해 타이밍을 맞추세요.
+  // 딜레이.
   setTimeout(type, 1000);
 
   // 6. TOP 버튼 & 이메일 복사
@@ -144,13 +142,13 @@ $(function () {
   let lastScrollTop = 0;
   const $header = $("header");
 
-  $(window).on("scroll", function() {
+  $(window).on("scroll", function () {
     let currentScroll = $(this).scrollTop();
 
     // 스크롤을 내리고 있고 & 현재 위치가 헤더 높이보다 아래라면 -> 숨김
     if (currentScroll > lastScrollTop && currentScroll > 80) {
       $header.addClass("hide");
-    } 
+    }
     // 스크롤을 올리고 있거나 & 최상단에 도달했다면 -> 보임
     else {
       $header.removeClass("hide");

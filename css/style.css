@@ -37,6 +37,12 @@ body {
   background-color: var(--bg-color);
   font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   letter-spacing: 0.02em;
+  background-image:
+    linear-gradient(var(--border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
+  background-attachment: fixed;
 }
 
 h1,
@@ -166,13 +172,13 @@ header .header_i nav ul li a.active {
   background-color: var(--white);
 }
 
-#top a:hover{
+#top a:hover {
   background-color: var(--point-color);
   color: var(--white);
   transition: 0.1s ease;
 }
 
-#top a:active{
+#top a:active {
   transform: translate(4px, 4px);
   box-shadow: 2px 2px var(--main-color);
   transition: 0.05s ease;
@@ -499,10 +505,10 @@ header .header_i nav ul li a.active {
   transition: 0.3s ease;
 }
 
-#aboutme .aboutme_i .am_box .skill .box:hover h2{
+#aboutme .aboutme_i .am_box .skill .box:hover h2 {
   background-color: var(--point-color);
   transform: scale(1.02);
-  box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
 }
 
 #aboutme .aboutme_i .am_box .skill .box .item_box .item {
@@ -739,13 +745,13 @@ header .header_i nav ul li a.active {
   box-shadow: 4px 4px 0 var(--main-color);
 }
 
-#portfolio .portfolio_i .contents .right .pf_item .text .btn a:hover{
+#portfolio .portfolio_i .contents .right .pf_item .text .btn a:hover {
   background-color: var(--point-color);
   color: var(--white);
   transition: 0.1s ease;
 }
 
-#portfolio .portfolio_i .contents .right .pf_item .text .btn a:active{
+#portfolio .portfolio_i .contents .right .pf_item .text .btn a:active {
   background-color: var(--point-color);
   color: var(--white);
   transform: translate(4px, 4px);
@@ -873,7 +879,7 @@ header .header_i nav ul li a.active {
   font-size: 24px;
 }
 
-#contact .contact_i .info .info_i .row dd:hover{
+#contact .contact_i .info .info_i .row dd:hover {
   color: var(--point-color);
 }
 
