@@ -37,12 +37,12 @@ body {
   background-color: var(--bg-color);
   font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   letter-spacing: 0.02em;
-  background-image:
+  /* background-image:
     linear-gradient(var(--border-light) 1px, transparent 1px),
     linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
   background-size: 40px 40px;
   background-position: center top;
-  background-attachment: fixed;
+  background-attachment: fixed; */
 }
 
 h1,
