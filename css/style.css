@@ -542,6 +542,13 @@ header .header_i nav ul li a.active {
   width: 40px;
   flex-shrink: 0;
   margin-right: 8px;
+  filter: grayscale(100%);
+  transition: 0.3s;
+}
+
+#aboutme .aboutme_i .am_box .skill .box .item_box .item:hover .icon {
+  filter: grayscale(0%);
+  transform: scale(1.1);
 }
 
 #portfolio {
