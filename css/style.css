@@ -8,7 +8,7 @@
   /* 전체 배경색 */
   --white: #fff;
   /* 흰색 (박스 배경, 텍스트 반전) */
-  --dot-color: #333;
+  --dot-color: #000;
   /* 배너 픽셀 도트 */
   --text-gray-1: #444;
   /* 프로세스 텍스트 */
@@ -16,16 +16,20 @@
   /* 설명 본문 텍스트 */
   --text-gray-3: #666;
   /* Contact 라벨 */
-  
+
   --line-gray-1: #777;
   /* Contact 점선 테두리, Nav 라인 */
   --line-gray-2: #888;
   /* 프로젝트 제목 밑줄 */
-  
+
   --border-light: #eee;
   /* 연한 테두리 (박스 내부) */
   --border-mid: #ddd;
   /* 중간 테두리 (모바일 등) */
+
+  --point-color: #2253DB;
+  /* 포인트 컬러 */
+  /* var(--point-color) */
 }
 
 body {
@@ -125,14 +129,15 @@ header .header_i nav ul li a {
 }
 
 header .header_i nav ul li a:hover {
-  background-color: var(--main-color);
+  background-color: var(--point-color);
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2); /* 투명도는 유지 */
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+  /* 투명도는 유지 */
 }
 
 header .header_i nav ul li a.active {
-  background-color: var(--main-color);
+  background-color: var(--point-color);
   color: var(--white);
 }
 
@@ -159,6 +164,18 @@ header .header_i nav ul li a.active {
   border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
   background-color: var(--white);
+}
+
+#top a:hover{
+  background-color: var(--point-color);
+  color: var(--white);
+  transition: 0.1s ease;
+}
+
+#top a:active{
+  transform: translate(4px, 4px);
+  box-shadow: 2px 2px var(--main-color);
+  transition: 0.05s ease;
 }
 
 /* #banner */
@@ -204,7 +221,8 @@ header .header_i nav ul li a.active {
 .pixel-dot {
   width: 18px;
   height: 18px;
-  background-color: var(--dot-color); /* 변수 적용 (#333) */
+  background-color: var(--dot-color);
+  /* 변수 적용 (#333) */
   opacity: 0;
   transform: translate(var(--rx), var(--ry)) scale(0);
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-in;
@@ -362,7 +380,7 @@ header .header_i nav ul li a.active {
   background-position: center;
   display: inline-block;
   vertical-align: middle;
-  background-image: url(../img/free-icon-font-folder-3917537\ 1.svg);
+  background-image: url(../img/folder.svg);
 }
 
 #aboutme .aboutme_i .am_box .profile .down .interests ul li .tree {
@@ -411,15 +429,15 @@ header .header_i nav ul li a.active {
 }
 
 #aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li .i1 {
-  background-image: url(../img/free-icon-font-bolt-6853834\ 1.svg);
+  background-image: url(../img/bolt.svg);
 }
 
 #aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li .i2 {
-  background-image: url(../img/free-icon-font-user-3917688\ 1.svg);
+  background-image: url(../img/user.svg);
 }
 
 #aboutme .aboutme_i .am_box .profile .down .interests ul li .tree li .i3 {
-  background-image: url(../img/free-icon-font-text-3914346\ 1.svg);
+  background-image: url(../img/text.svg);
 }
 
 
@@ -478,13 +496,21 @@ header .header_i nav ul li a.active {
   border-radius: 4px;
   padding-left: 16px;
   align-content: center;
+  transition: 0.3s ease;
+}
+
+#aboutme .aboutme_i .am_box .skill .box:hover h2{
+  background-color: var(--point-color);
+  transform: scale(1.02);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
 }
 
 #aboutme .aboutme_i .am_box .skill .box .item_box .item {
   display: flex;
   flex: 1;
   align-items: center;
-  border-bottom: 1px dashed var(--border-light); /* 변수 적용 (#eee) */
+  border-bottom: 1px dashed var(--border-light);
+  /* 변수 적용 (#eee) */
   padding: 8px 0;
 }
 
@@ -499,6 +525,7 @@ header .header_i nav ul li a.active {
   padding-bottom: 0;
   padding-top: 16px;
 }
+
 
 #aboutme .aboutme_i .am_box .skill .box .item_box .item:last-of-type {
   border-bottom: none;
@@ -547,13 +574,14 @@ header .header_i nav ul li a.active {
 }
 
 #portfolio .portfolio_i .contents .left nav ul {
-  border-left: 2px solid var(--line-gray-1); /* 변수 적용 (#777) */
+  border-left: 2px solid var(--line-gray-1);
+  /* 변수 적용 (#777) */
   padding-left: 10px;
 }
 
 #portfolio .portfolio_i .contents .left nav ul li {
   font-size: 20px;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
   cursor: pointer;
   margin-bottom: 5px;
   border-radius: 4px;
@@ -584,7 +612,7 @@ header .header_i nav ul li a.active {
 }
 
 #portfolio .portfolio_i .contents .left nav ul li.active {
-  background-color: var(--main-color);
+  background-color: var(--point-color);
   color: var(--white);
 }
 
@@ -602,6 +630,7 @@ header .header_i nav ul li a.active {
   transition: top;
   z-index: 10;
   animation: blink 1s infinite step-end;
+  color: var(--point-color);
 }
 
 #portfolio .portfolio_i .contents .right {
@@ -649,8 +678,8 @@ header .header_i nav ul li a.active {
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .text .t_title span {
-  color: var(--line-gray-2); 
-  border-bottom: 1px solid var(--line-gray-2); 
+  color: var(--line-gray-2);
+  border-bottom: 1px solid var(--line-gray-2);
   margin-bottom: 20px;
   display: inline-block;
 }
@@ -701,6 +730,20 @@ header .header_i nav ul li a.active {
   border: 2px solid var(--main-color);
   border-radius: 4px;
   box-shadow: 4px 4px 0 var(--main-color);
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .btn a:hover{
+  background-color: var(--point-color);
+  color: var(--white);
+  transition: 0.1s ease;
+}
+
+#portfolio .portfolio_i .contents .right .pf_item .text .btn a:active{
+  background-color: var(--point-color);
+  color: var(--white);
+  transform: translate(4px, 4px);
+  transition: 0.05s ease;
+  box-shadow: 2px 2px 0px var(--main-color);
 }
 
 #portfolio .portfolio_i .contents .right .pf_item .img {
@@ -823,6 +866,10 @@ header .header_i nav ul li a.active {
   font-size: 24px;
 }
 
+#contact .contact_i .info .info_i .row dd:hover{
+  color: var(--point-color);
+}
+
 footer {
   height: auto;
   width: 100%;
@@ -905,7 +952,8 @@ footer .footer_i p {
     right: -100%;
     width: 100%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.95); /* rgba는 그대로 유지 */
+    background-color: rgba(255, 255, 255, 0.95);
+    /* rgba는 그대로 유지 */
     z-index: 1000;
     transition: 0.4s ease;
     justify-content: center;
